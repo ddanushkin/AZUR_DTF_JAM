@@ -47,5 +47,15 @@
     "com.unity.modules.vr": "1.0.0",
     "com.unity.modules.wind": "1.0.0",
     "com.unity.modules.xr": "1.0.0"
+  },
+  "lock": {
+    "com.leopotam.ecs": {
+      "revision": "HEAD",
+      "hash": "b1af9c63d82b26055ac7fd1b12beb5c0ac1f0a94"
+    },
+    "com.leopotam.ecs-unityintegration": {
+      "revision": "HEAD",
+      "hash": "a3ab84f4e28443f8ba66231cb697598277459b8d"
+    }
   }
 }
