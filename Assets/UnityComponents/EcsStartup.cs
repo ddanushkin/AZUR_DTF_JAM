@@ -23,6 +23,7 @@ namespace Game {
                 // register your systems here, for example:
                 // .Add (new TestSystem1 ())
                 // .Add (new TestSystem2 ())
+                .Add(new InitSystem())
                 .Add(new UpdateTimerSystem())
                 
                 // register one-frame components (order is important), for example:

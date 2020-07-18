@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 namespace Game
 {
@@ -8,5 +9,6 @@ namespace Game
 		public GameObject Player;
 		public Camera Camera;
 		public UI UI;
+		public GameObject circle;
 	}
 }
