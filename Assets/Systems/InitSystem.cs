@@ -20,6 +20,7 @@ namespace Game
 				Go = clockGo,
 				HandSpeed = 12f,
 				ScorePerSecond = 20f,
+				SpeedHandBack = 120f,
 				HandTransform = clockGo.GetComponent<HandTransformProvider>().handTransform
 			};
 			

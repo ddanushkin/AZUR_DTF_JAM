@@ -33,9 +33,10 @@ namespace Game
 					_filter.GetEntity(index).Get<UpdateScoreEvent>() = new UpdateScoreEvent();
 				}
 				
-				if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject())
+				if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject() 
+				                            && clock.HandSpeed < clock.SpeedHandBack)
 				{
-					var angleDiff = 120f * Time.deltaTime;
+					var angleDiff = clock.SpeedHandBack * Time.deltaTime;
 					clock.CurrentAngle += angleDiff;
 					handTransform.Rotate(Vector3.forward * angleDiff);
 					if (clock.CurrentAngle >= clock.MaxAngle)

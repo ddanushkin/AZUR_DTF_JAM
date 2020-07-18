@@ -8,6 +8,7 @@ namespace Game
 		public float CurrentAngle;
 		public float HandSpeed;
 		public float ScorePerSecond;
+		public float SpeedHandBack;
 		public GameObject Go;
 		public Transform HandTransform;
 	}

@@ -28,10 +28,14 @@ namespace Game {
                 .Add(new UpdateScoreSystem())
                 .Add(new UiUpgradeSystem())
                 .Add(new HandSpeedUpgradeSystem())
+                .Add(new ScoreUpgradeSystem())
+                .Add(new HandSpeedBackSystem())
                 
                 // register one-frame components (order is important), for example:
                 .OneFrame<UpdateScoreEvent> ()
                 .OneFrame<HandSpeedUpgradeEvent>()
+                .OneFrame<ScoreUpgradeEvent>()
+                .OneFrame<HandSpeedBackEvent>()
                 // inject service instances here (order doesn't important), for example:
                 .Inject(Configuration)
                 .Inject(SceneData)

@@ -19,6 +19,19 @@ namespace Game
 			{
 				_ecsWorld.NewEntity().Get<HandSpeedUpgradeEvent>();
 			});
+			
+			Button scoreUpgradeButton = _sceneData.UI.ScoreUpgradeButton;
+			scoreUpgradeButton.onClick.RemoveAllListeners();
+			scoreUpgradeButton.onClick.AddListener(() =>
+			{
+				_ecsWorld.NewEntity().Get<ScoreUpgradeEvent>();
+			});
+			
+			_sceneData.UI.HandSpeedBackButton.onClick.RemoveAllListeners();
+			_sceneData.UI.HandSpeedBackButton.onClick.AddListener(() =>
+			{
+				_ecsWorld.NewEntity().Get<HandSpeedBackEvent>();
+			});
 		}
 	}
 }
