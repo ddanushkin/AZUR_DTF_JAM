@@ -282,6 +282,7 @@ MonoBehaviour:
   - {fileID: 4092892321925004243, guid: fa1ad49d6c2cf6e4bae579c7679cd284, type: 3}
   - {fileID: 3300780097460673112, guid: 7ed96a5b6507a5f4bbcbf6c1ab5a7601, type: 3}
   - {fileID: 7706027660134231409, guid: c3bce80c03faee64598aed70773d8157, type: 3}
+  circle: {fileID: 1642931290148849772, guid: b0b9335345bbd7646a334d14affc8b5f, type: 3}
 --- !u!20 &519420031
 Camera:
   m_ObjectHideFlags: 0

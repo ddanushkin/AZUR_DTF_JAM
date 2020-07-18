@@ -9,7 +9,8 @@ public class GameBuilder : MonoBehaviour
     [SerializeField] private GameObject prefabStartRoom;
     [SerializeField] private GameObject prefabPlayer;
     [SerializeField] private GameObject[] prefabsFloors = new GameObject[3];
-
+    [SerializeField] private GameObject circle;
+     
     private void Awake()
     {
         Instantiate(prefabPlayer, Vector3.zero, Quaternion.identity);
@@ -22,6 +23,11 @@ public class GameBuilder : MonoBehaviour
         for (int i = 1; i < 5; i++)
         {
             Instantiate(prefabsFloors[Random.Range(0, 3)], new Vector3(0, i * 2, 0), Quaternion.identity);
+        }
+
+        for (int i = 0; i < 7; i++)
+        {
+            Instantiate(circle, new Vector3(-4 + (i * 2), 1, 0), Quaternion.identity);
         }
     }
 }

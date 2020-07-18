@@ -6,6 +6,7 @@ TagManager:
   tags:
   - RoomWall
   - RoomFloor
+  - Circle
   layers:
   - Default
   - TransparentFX
