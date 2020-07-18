@@ -1,11 +1,13 @@
 using Leopotam.Ecs;
 using UnityEngine;
 
-namespace Client {
-    sealed class EcsStartup : MonoBehaviour {
+namespace Game {
+    sealed class EcsStartup : MonoBehaviour
+    {
         EcsWorld _world;
         EcsSystems _systems;
-
+        [SerializeField] private Configuration _configuration;
+        
         void Start () {
             // void can be switched to IEnumerator for support coroutines.
             
@@ -25,6 +27,7 @@ namespace Client {
                 // .OneFrame<TestComponent2> ()
                 
                 // inject service instances here (order doesn't important), for example:
+                .Inject(_configuration)
                 // .Inject (new CameraService ())
                 // .Inject (new NavMeshSupport ())
                 .Init ();
