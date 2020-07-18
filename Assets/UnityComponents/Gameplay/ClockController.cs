@@ -18,7 +18,6 @@ namespace Game
 
         void Update()
         {
-            Debug.Log($"Angles {transform.eulerAngles}");
             var angles = transform.localEulerAngles;
             if (_angleReminder < 0)
             {
@@ -33,6 +32,7 @@ namespace Game
                 var angleDiff = speed * Time.deltaTime;
                 transform.Rotate(Vector3.forward * -angleDiff);
                 _angleReminder -= angleDiff;
+                //Update Score
             }
             
             if (Input.GetMouseButton(0))
@@ -40,7 +40,7 @@ namespace Game
                 var angleDiff = 120f * Time.deltaTime;
                 _angleReminder += angleDiff;
                 transform.Rotate(Vector3.forward * angleDiff);
-                if (_angleReminder > defaultAngleReminder)
+                if (_angleReminder >= defaultAngleReminder)
                 {
                     angles.z = 0f;
                     transform.eulerAngles = angles;

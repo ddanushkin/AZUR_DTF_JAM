@@ -7,34 +7,36 @@ namespace Game {
     {
         EcsWorld _world;
         EcsSystems _systems;
+        private GameState _gameState;
         public Configuration Configuration;
         public SceneData SceneData;
 
         void Start () {
-            
-            
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
 #if UNITY_EDITOR
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
 #endif
+            _gameState = new GameState();
+            
             _systems
                 // register your systems here, for example:
-                // .Add (new TestSystem1 ())
-                // .Add (new TestSystem2 ())
                 .Add(new InitSystem())
+                .Add(new ClockSystem())
                 .Add(new UpdateTimerSystem())
+                .Add(new UpdateScoreSystem())
+                .Add(new UiUpgradeSystem())
+                .Add(new HandSpeedUpgradeSystem())
                 
                 // register one-frame components (order is important), for example:
-                // .OneFrame<TestComponent1> ()
-                // .OneFrame<TestComponent2> ()
-                
+                .OneFrame<UpdateScoreEvent> ()
+                .OneFrame<HandSpeedUpgradeEvent>()
                 // inject service instances here (order doesn't important), for example:
                 .Inject(Configuration)
                 .Inject(SceneData)
-                // .Inject (new CameraService ())
-                // .Inject (new NavMeshSupport ())
+                .Inject(_gameState)
+
                 .Init ();
         }
 
