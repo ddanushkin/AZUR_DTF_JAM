@@ -1,3 +1,4 @@
+using System;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -6,11 +7,12 @@ namespace Game {
     {
         EcsWorld _world;
         EcsSystems _systems;
-        [SerializeField] private Configuration _configuration;
-        [SerializeField] public UI _UI;
-            
-        void Start () {
+        public Configuration Configuration;
+        public SceneData SceneData;
 
+        void Start () {
+            
+            
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
 #if UNITY_EDITOR
@@ -28,8 +30,8 @@ namespace Game {
                 // .OneFrame<TestComponent2> ()
                 
                 // inject service instances here (order doesn't important), for example:
-                .Inject(_configuration)
-                .Inject(_UI)
+                .Inject(Configuration)
+                .Inject(SceneData)
                 // .Inject (new CameraService ())
                 // .Inject (new NavMeshSupport ())
                 .Init ();
