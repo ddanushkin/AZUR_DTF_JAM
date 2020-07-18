@@ -7,10 +7,10 @@ namespace Game {
         EcsWorld _world;
         EcsSystems _systems;
         [SerializeField] private Configuration _configuration;
-        
-        void Start () {
-            // void can be switched to IEnumerator for support coroutines.
+        [SerializeField] public UI _UI;
             
+        void Start () {
+
             _world = new EcsWorld ();
             _systems = new EcsSystems (_world);
 #if UNITY_EDITOR
@@ -21,6 +21,7 @@ namespace Game {
                 // register your systems here, for example:
                 // .Add (new TestSystem1 ())
                 // .Add (new TestSystem2 ())
+                .Add(new UpdateTimerSystem())
                 
                 // register one-frame components (order is important), for example:
                 // .OneFrame<TestComponent1> ()
@@ -28,6 +29,7 @@ namespace Game {
                 
                 // inject service instances here (order doesn't important), for example:
                 .Inject(_configuration)
+                .Inject(_UI)
                 // .Inject (new CameraService ())
                 // .Inject (new NavMeshSupport ())
                 .Init ();
