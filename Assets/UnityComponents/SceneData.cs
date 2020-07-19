@@ -11,6 +11,7 @@ namespace Game
 		public GameObject circle;
 		public GameObject clockPrefab;
 		public GameObject helperPrefab;
+		public GameObject upgradeButtonPrefab;
 		public Camera camera;
 		private void Awake()
 		{

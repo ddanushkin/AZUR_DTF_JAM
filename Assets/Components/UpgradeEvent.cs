@@ -1,3 +1,5 @@
+using Game.UnityComponents;
+
 namespace Game
 {
 	internal struct UpgradeEvent

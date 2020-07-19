@@ -1,8 +1,15 @@
+using Game.UnityComponents;
+
 namespace Game
 {
 	public class ScorePerSecondUpgrade : Upgrade
 	{
-		public ScorePerSecondUpgrade(UpgradeConfig config) : base(config) {}
+		public ScorePerSecondUpgrade Instance;
+
+		public ScorePerSecondUpgrade(UpgradeConfig config) : base(config)
+		{
+			Instance = this;
+		}
 
 		public override void Process(ref ClockComponent clock)
 		{

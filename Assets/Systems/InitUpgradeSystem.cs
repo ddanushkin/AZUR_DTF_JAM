@@ -1,8 +1,10 @@
+using System;
+using Game.UnityComponents;
 using Leopotam.Ecs;
+using Unity.Mathematics;
 using UnityEngine;
-using UnityEngine.Events;
-using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 namespace Game
 {
@@ -14,29 +16,41 @@ namespace Game
 
 		public void Init()
 		{
-			SubscribeUpgradeToButtonEvent(
-				_sceneData.UI.HandSpeedUpgradeButton,
-				new HandSpeedUpgrade(_config.FindUpgradeConfig("HandSpeed")));
-			
-			SubscribeUpgradeToButtonEvent(
-				_sceneData.UI.ScoreUpgradeButton,
-				new ScorePerSecondUpgrade(_config.FindUpgradeConfig("ScorePerSecond")));
-			
-			SubscribeUpgradeToButtonEvent(
-				_sceneData.UI.HandReloadSpeedButton,
-				new ReloadSpeedUpgrade(_config.FindUpgradeConfig("ReloadSpeed")));
-			
-			_sceneData.UI.SpawnClockButton.onClick.AddListener(() =>
+			SubscribeUpgradeToButton<HandSpeedUpgrade>("HandSpeed");
+			SubscribeUpgradeToButton<ScorePerSecondUpgrade>("ScorePerSecond");
+			SubscribeUpgradeToButton<ReloadSpeedUpgrade>("ReloadSpeed");
+
+			SubscribeEntityEventToButton<ClockSpawnEvent>("Spawn Clock");
+			SubscribeEntityEventToButton<HelperSpawnEvent>("Spawn Helper");
+		}
+
+		private void SubscribeEntityEventToButton<T>(string name) where T : struct
+		{
+			var buttonGameObject = Object.Instantiate(
+				_sceneData.upgradeButtonPrefab, Vector3.zero, quaternion.identity,
+				_sceneData.UI.UpgradesLayoutCanvas.transform);
+
+			var buttonComponent = buttonGameObject.GetComponent<Button>();
+			buttonGameObject.GetComponentInChildren<Text>().text = name;
+			buttonComponent.onClick.AddListener(() =>
 			{
-				_ecsWorld.NewEntity().Get<ClockSpawnEvent>() = new ClockSpawnEvent();
+				_ecsWorld.NewEntity().Get<T>() = new T();
 			});
 		}
 
-		private void SubscribeUpgradeToButtonEvent(Button button, Upgrade upgrade)
+		private void SubscribeUpgradeToButton<T>(string name) where T : Upgrade
 		{
-			button.onClick.AddListener(() =>
+			var upgradeInstanse = (T)Activator.CreateInstance(typeof(T), _config.FindUpgradeConfig(name));
+			
+			var buttonGameObject = Object.Instantiate(
+				_sceneData.upgradeButtonPrefab, Vector3.zero, quaternion.identity,
+				_sceneData.UI.UpgradesLayoutCanvas.transform);
+			
+			var buttonComponent = buttonGameObject.GetComponent<Button>();
+			buttonGameObject.GetComponentInChildren<Text>().text = upgradeInstanse.name;
+			buttonComponent.onClick.AddListener(() =>
 			{
-				_ecsWorld.NewEntity().Get<UpgradeEvent>() = new UpgradeEvent(upgrade);
+				_ecsWorld.NewEntity().Get<UpgradeEvent>() = new UpgradeEvent(upgradeInstanse);
 			});
 		}
 	}

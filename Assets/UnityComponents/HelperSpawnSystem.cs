@@ -14,8 +14,8 @@ namespace Game
 		{
 			if (_filter.IsEmpty()) return;
 			ref ClockComponent clock = ref _clocksFilter.Get1(0);
-			Debug.Log(clock);
-			Debug.Log(clock.Transform);
+			//Debug.Log(clock);
+			//Debug.Log(clock.Transform);
 			var helperPosition = clock.Transform.position;
 			var helperEntity = _ecsWorld.NewEntity();
 			var go = Object.Instantiate(_sceneData.helperPrefab, helperPosition, Quaternion.identity);

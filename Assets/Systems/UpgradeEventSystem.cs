@@ -1,3 +1,4 @@
+using Game.UnityComponents;
 using Leopotam.Ecs;
 using UnityEngine;
 
@@ -21,7 +22,6 @@ namespace Game
 				ref ClockComponent clockComponent = ref _filter.Get1(index);
 				upgrade.Process(ref clockComponent);
 			}
-			
 			_ecsWorld.NewEntity().Get<UpdateScoreUIEvent>();
 		}
 	}
