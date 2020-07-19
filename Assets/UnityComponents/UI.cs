@@ -7,6 +7,10 @@ class UI : MonoBehaviour
 	public Text Timer;
 	public Text Score;
 	public Button HandSpeedUpgradeButton;
+	public Text costHandSpeedUpgrade;
 	public Button ScoreUpgradeButton;
+	public Text costScoreUpgrade;
 	public Button HandReloadSpeedButton;
+	public Text costHandReloadSpeed;
+	public Text ScorePerSecond;
 }
