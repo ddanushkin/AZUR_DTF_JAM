@@ -24,16 +24,23 @@ namespace Game {
                 // register your systems here, for example:
                 .Add(new InitSystem())
                 .Add(new InitUpgradeSystem())
+                .Add(new MouseInputSystem())
                 .Add(new ClockSystem())
                 .Add(new ClockReloadSystem())
                 .Add(new UpdateTimerUISystem())
                 .Add(new UpdateScoreSystem())
                 .Add(new UpdateScoreUISystem())
                 .Add(new UpgradeEventSystem())
+                .Add(new ClockSpawnSystem())
+                .Add(new HelperSpawnSystem())
+                .Add(new HelperMotionSystem())
 
                 // register one-frame components (order is important), for example:
                 .OneFrame<UpdateScoreEvent>()
+                .OneFrame<ClockSpawnEvent>()
+                .OneFrame<ClockReloadEvent>()
                 .OneFrame<UpdateScoreUIEvent>()
+                .OneFrame<HelperSpawnEvent>()
                 .OneFrame<UpgradeEvent>()
 
                 // inject service instances here (order doesn't important), for example:

@@ -9,4 +9,5 @@ class UI : MonoBehaviour
 	public Button HandSpeedUpgradeButton;
 	public Button ScoreUpgradeButton;
 	public Button HandReloadSpeedButton;
+	public Button SpawnClockButton;
 }

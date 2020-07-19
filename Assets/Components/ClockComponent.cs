@@ -9,7 +9,9 @@ namespace Game
 		public float HandSpeed;
 		public float ScorePerSecond;
 		public float SpeedHandBack;
-		public GameObject Go;
 		public Transform HandTransform;
+		public Bounds Bounds;
+		public Transform Transform;
+		public int helperCount;
 	}
 }

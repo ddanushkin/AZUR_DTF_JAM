@@ -6,7 +6,6 @@ namespace Game
 	internal class UpdateScoreSystem : IEcsRunSystem
 	{
 		private EcsFilter<ClockComponent, UpdateScoreEvent> _filter;
-		private SceneData _sceneData;
 		private GameState _gameState;
 		private EcsWorld _ecsWorld;
 		
