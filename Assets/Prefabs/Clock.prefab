@@ -188,6 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 447609260245299289}
   - component: {fileID: 3996957256730882300}
+  - component: {fileID: 1527148970282114017}
   m_Layer: 0
   m_Name: Clock
   m_TagString: Untagged
@@ -224,6 +225,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   handTransform: {fileID: 447609259581104948}
+--- !u!114 &1527148970282114017
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 447609260245299288}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1a4bcbbdef8b6064c8411aeb52fdff70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  renderer: {fileID: 447609260041165773}
+  bounds:
+    m_Center: {x: 0, y: 0, z: 0}
+    m_Extent: {x: 0, y: 0, z: 0}
 --- !u!1 &447609260504747600
 GameObject:
   m_ObjectHideFlags: 0

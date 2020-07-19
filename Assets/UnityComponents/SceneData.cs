@@ -10,5 +10,11 @@ namespace Game
 		public UI UI;
 		public GameObject circle;
 		public GameObject clockPrefab;
+		public GameObject helperPrefab;
+		public Camera camera;
+		private void Awake()
+		{
+			camera = Camera.main;
+		}
 	}
 }

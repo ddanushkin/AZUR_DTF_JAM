@@ -25,6 +25,11 @@ namespace Game
 			SubscribeUpgradeToButtonEvent(
 				_sceneData.UI.HandReloadSpeedButton,
 				new ReloadSpeedUpgrade(_config.FindUpgradeConfig("ReloadSpeed")));
+			
+			_sceneData.UI.SpawnClockButton.onClick.AddListener(() =>
+			{
+				_ecsWorld.NewEntity().Get<ClockSpawnEvent>() = new ClockSpawnEvent();
+			});
 		}
 
 		private void SubscribeUpgradeToButtonEvent(Button button, Upgrade upgrade)

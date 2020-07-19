@@ -6,7 +6,7 @@ namespace Game
 {
 	internal class ClockSystem : IEcsRunSystem
 	{
-		private EcsFilter<ClockComponent>.Exclude<NeedReloadFlag> _filter;
+		private EcsFilter<ClockComponent> _filter;
 
 		public void Run()
 		{
@@ -21,10 +21,8 @@ namespace Game
 					clock.CurrentAngle = 0f;
 					angles.z = 0f;
 					handTransform.eulerAngles = angles;
-					_filter.GetEntity(index).Get<NeedReloadFlag>() = new NeedReloadFlag();
 				}
-        
-				if (clock.CurrentAngle > 0f)
+				else if (clock.CurrentAngle > 0f)
 				{
 					var angleDiff = clock.HandSpeed * Time.deltaTime;
 					handTransform.Rotate(Vector3.forward * -angleDiff);

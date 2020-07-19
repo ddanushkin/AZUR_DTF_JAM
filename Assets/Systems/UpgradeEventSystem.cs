@@ -17,7 +17,11 @@ namespace Game
 			if (_gameState.Score < upgrade.cost) return;
 			_gameState.Score -= upgrade.cost;
 			foreach (var index in _filter)
-				upgrade.Process(ref _filter.Get1(index));
+			{
+				ref ClockComponent clockComponent = ref _filter.Get1(index);
+				upgrade.Process(ref clockComponent);
+			}
+			
 			_ecsWorld.NewEntity().Get<UpdateScoreUIEvent>();
 		}
 	}

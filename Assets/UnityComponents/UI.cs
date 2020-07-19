@@ -11,6 +11,7 @@ class UI : MonoBehaviour
 	public Button ScoreUpgradeButton;
 	public Text costScoreUpgrade;
 	public Button HandReloadSpeedButton;
+	public Button SpawnClockButton;
 	public Text costHandReloadSpeed;
 	public Text ScorePerSecond;
 }
