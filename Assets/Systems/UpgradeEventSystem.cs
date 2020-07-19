@@ -20,6 +20,7 @@ namespace Game
 			foreach (var index in _filter)
 			{
 				ref ClockComponent clockComponent = ref _filter.Get1(index);
+				Debug.Log(upgrade.name);
 				upgrade.Process(ref clockComponent);
 			}
 			_ecsWorld.NewEntity().Get<UpdateScoreUIEvent>();

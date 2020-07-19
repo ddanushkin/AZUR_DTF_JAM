@@ -1,4 +1,5 @@
 using Game.UnityComponents;
+using UnityEngine;
 
 namespace Game
 {
@@ -10,6 +11,7 @@ namespace Game
 			clock.HandSpeed += level * 1.25f;
 			level += 1;
 			cost += cost * 2f;
+			Debug.Log(cost);
 		}
 
 		public HandSpeedUpgrade(UpgradeConfig config) : base(config)

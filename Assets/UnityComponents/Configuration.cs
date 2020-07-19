@@ -17,17 +17,17 @@ namespace Game.UnityComponents
 			return upgradeConfigs.Find(config => config.name == upgradeName);
 		}
 
-		private void OnValidate()
-		{
-			var subclassTypes = Assembly
-				.GetAssembly(typeof(Upgrade))
-				.GetTypes()
-				.Where(t => t.IsSubclassOf(typeof(Upgrade)));
-			foreach (var subclassType in subclassTypes)
-			{
-				Debug.Log(subclassType.Name);
-			}
-		}
+		// private void OnValidate()
+		// {
+		// 	var subclassTypes = Assembly
+		// 		.GetAssembly(typeof(Upgrade))
+		// 		.GetTypes()
+		// 		.Where(t => t.IsSubclassOf(typeof(Upgrade)));
+		// 	foreach (var subclassType in subclassTypes)
+		// 	{
+		// 		Debug.Log(subclassType.Name);
+		// 	}
+		// }
 	}
 
 	[Serializable]

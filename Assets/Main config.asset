@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   upgradeConfigs:
   - name: HandSpeed
-    cost: 100
+    cost: 1
     level: 1
   - name: ScorePerSecond
     cost: 200

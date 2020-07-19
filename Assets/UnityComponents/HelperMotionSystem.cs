@@ -26,5 +26,6 @@ namespace Game
 		public float Angle;
 		public Transform Transform;
 		public float RotateSpeed;
+		public EcsEntity Parent;
 	}
 }

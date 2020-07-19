@@ -28,6 +28,8 @@ namespace Game
 				Transform = clockGo.transform,
 				helperCount = 0
 			};
+			if (_gameState.ActiveClock.IsNull())
+				_gameState.ActiveClock = clockEntity;
 			_gameState.SpawnedClocks++;
 		}
 	}

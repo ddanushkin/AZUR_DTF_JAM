@@ -13,7 +13,8 @@ namespace Game
 		private EcsWorld _ecsWorld;
 		private SceneData _sceneData;
 		private Configuration _config;
-
+		private GameState _gameState;
+		
 		public void Init()
 		{
 			SubscribeUpgradeToButton<HandSpeedUpgrade>("HandSpeed");
@@ -21,9 +22,25 @@ namespace Game
 			SubscribeUpgradeToButton<ReloadSpeedUpgrade>("ReloadSpeed");
 
 			SubscribeEntityEventToButton<ClockSpawnEvent>("Spawn Clock");
-			SubscribeEntityEventToButton<HelperSpawnEvent>("Spawn Helper");
-		}
+			//SubscribeEntityEventToButton<HelperSpawnEvent>("Spawn Helper");
+			
+			var buttonGameObject = Object.Instantiate(
+				_sceneData.upgradeButtonPrefab, Vector3.zero, quaternion.identity,
+				_sceneData.UI.UpgradesLayoutCanvas.transform);
 
+			var buttonComponent = buttonGameObject.GetComponent<Button>();
+			buttonGameObject.GetComponentInChildren<Text>().text = "Spawn Helper";
+			buttonComponent.onClick.AddListener(() =>
+			{
+				_ecsWorld.NewEntity().Get<HelperSpawnEvent>() = new HelperSpawnEvent()
+				{
+					Parent = _gameState.ActiveClock
+				};
+			});
+		}
+		
+		
+		
 		private void SubscribeEntityEventToButton<T>(string name) where T : struct
 		{
 			var buttonGameObject = Object.Instantiate(

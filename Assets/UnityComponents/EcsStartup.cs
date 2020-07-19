@@ -35,11 +35,12 @@ namespace Game {
                 .Add(new ClockSpawnSystem())
                 .Add(new HelperSpawnSystem())
                 .Add(new HelperMotionSystem())
-
+                .Add(new TimerSystem())
+                .Add(new HelperProcSystem())
+                
                 // register one-frame components (order is important), for example:
                 .OneFrame<UpdateScoreEvent>()
                 .OneFrame<ClockSpawnEvent>()
-                .OneFrame<ClockReloadEvent>()
                 .OneFrame<UpdateScoreUIEvent>()
                 .OneFrame<HelperSpawnEvent>()
                 .OneFrame<UpgradeEvent>()
@@ -64,5 +65,12 @@ namespace Game {
                 _world = null;
             }
         }
+    }
+
+    public struct TimerComponent
+    {
+        public float TotalSeconds;
+        public float ElapsedSeconds;
+        public bool Finished;
     }
 }

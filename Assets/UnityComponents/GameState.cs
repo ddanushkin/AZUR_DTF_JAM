@@ -1,3 +1,5 @@
+using Leopotam.Ecs;
+
 namespace Game
 {
 	internal class GameState
@@ -7,5 +9,6 @@ namespace Game
 		public int scoreUpgradeLvl = 1;
 		public int handSpeedBackLvl = 1;
 		public float ScorePerSecond = 1;
+		public EcsEntity ActiveClock;
 	}
 }

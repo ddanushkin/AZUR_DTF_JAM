@@ -6,12 +6,12 @@ namespace Game
 	{
 		private SceneData _sceneData;
 		private EcsWorld _ecsWorld;
+		private GameState _gameState;
 		
 		public void Init()
 		{
-			var Starter = _ecsWorld.NewEntity();
-			Starter.Get<ClockSpawnEvent>() = new ClockSpawnEvent();
-			Starter.Get<HelperSpawnEvent>() = new HelperSpawnEvent(); 
+			var e = _ecsWorld.NewEntity();
+			e.Get<ClockSpawnEvent>() = new ClockSpawnEvent();
 		}
 	}
 }

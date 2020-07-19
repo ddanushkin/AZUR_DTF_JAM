@@ -9,25 +9,33 @@ namespace Game
 		private EcsFilter<ClockComponent> _clocksFilter;
 		private EcsWorld _ecsWorld;
 		private SceneData _sceneData;
+		private GameState _gameState;
 
 		public void Run()
 		{
 			if (_filter.IsEmpty()) return;
-			ref ClockComponent clock = ref _clocksFilter.Get1(0);
-			//Debug.Log(clock);
-			//Debug.Log(clock.Transform);
+			EcsEntity clockEntity = _gameState.ActiveClock;
+			ref ClockComponent clock = ref clockEntity.Get<ClockComponent>();
+			clock.helperCount++;
 			var helperPosition = clock.Transform.position;
 			var helperEntity = _ecsWorld.NewEntity();
-			var go = Object.Instantiate(_sceneData.helperPrefab, helperPosition, Quaternion.identity);
+			var go = Object.Instantiate(
+				_sceneData.helperPrefab, helperPosition, Quaternion.identity, clock.Transform);
 			helperEntity.Get<HelperComponent>() = new HelperComponent
 			{
 				Angle = 0f,
 				Center = helperPosition,
 				Radius = 5f,
 				RotateSpeed = 0.25f,
-				Transform = go.transform
+				Transform = go.transform,
+				Parent = clockEntity
 			};
-			clock.helperCount++;
+			helperEntity.Get<TimerComponent>() = new TimerComponent()
+			{
+				ElapsedSeconds = 0f,
+				Finished = false,
+				TotalSeconds = 5f
+			};
 		}
 	}
 }

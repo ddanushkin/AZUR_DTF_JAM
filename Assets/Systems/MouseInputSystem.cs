@@ -8,6 +8,7 @@ namespace Game
 	{
 		private EcsFilter<ClockComponent> _filter;
 		private SceneData _sceneData;
+		private GameState _gameState;
 		
 		public void Run()
 		{
@@ -21,8 +22,23 @@ namespace Game
 					var mouseOverClock = clock.Bounds.Contains(mousePosition);
 					if (mouseOverClock && clock.HandSpeed < clock.SpeedHandBack)
 					{
+						_gameState.ActiveClock = _filter.GetEntity(index);
 						if (clock.HandSpeed < clock.SpeedHandBack)
-							_filter.GetEntity(index).Get<ClockReloadEvent>() = new ClockReloadEvent();
+						{
+							var clockEntity = _filter.GetEntity(index);
+							if (clockEntity.Has<ClockReloadEvent>())
+							{
+								ref ClockReloadEvent reloadEvent = ref clockEntity.Get<ClockReloadEvent>();
+								reloadEvent.Timer += 0.001f;
+							}
+							else
+							{
+								_filter.GetEntity(index).Get<ClockReloadEvent>() = new ClockReloadEvent()
+								{
+									Timer = 0.001f
+								};	
+							}
+						}
 					}
 				}
 			}
