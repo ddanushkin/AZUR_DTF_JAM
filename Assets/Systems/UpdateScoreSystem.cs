@@ -11,14 +11,19 @@ namespace Game
 		
 		public void Run()
 		{
+			if (_filter.IsEmpty()) return;
+			int count = 0;
+			float truScoreCurrent = 0;
 			foreach (var index in _filter)
 			{
+				count++;
 				ref ClockComponent clock = ref _filter.Get1(index);
-				float truScoreCurrent = clock.ScorePerSecond * clock.HandSpeed / 6f;
+				truScoreCurrent += clock.ScorePerSecond * clock.HandSpeed / 6f;
 				var scoreDiff = clock.ScorePerSecond * clock.HandSpeed / 6f * Time.deltaTime;
 				_gameState.Score += scoreDiff;
-				_gameState.ScorePerSecond = truScoreCurrent;
 			}
+			
+			_gameState.ScorePerSecond = truScoreCurrent;
 			_ecsWorld.NewEntity().Get<UpdateScoreUIEvent>();
 		}
 	}

@@ -4,7 +4,7 @@ namespace Game
 {
 	public class ScorePerSecondUpgrade : Upgrade
 	{
-		public ScorePerSecondUpgrade Instance;
+		public static ScorePerSecondUpgrade Instance;
 
 		public ScorePerSecondUpgrade(UpgradeConfig config) : base(config)
 		{
