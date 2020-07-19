@@ -17,12 +17,9 @@ namespace Game
 				ref Upgrade upgrade = ref _eventFilter.Get1(0).UpgradeData;
 			if (_gameState.Score < upgrade.cost) return;
 			_gameState.Score -= upgrade.cost;
-			foreach (var index in _filter)
-			{
-				ref ClockComponent clockComponent = ref _filter.Get1(index);
-				Debug.Log(upgrade.name);
-				upgrade.Process(ref clockComponent);
-			}
+			ref ClockComponent clockComponent = ref _gameState.ActiveClock.Get<ClockComponent>();
+			// Debug.Log(upgrade.name);
+			upgrade.Process(ref clockComponent);
 			_ecsWorld.NewEntity().Get<UpdateScoreUIEvent>();
 		}
 	}

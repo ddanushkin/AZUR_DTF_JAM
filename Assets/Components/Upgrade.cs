@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 namespace Game.UnityComponents
 {
@@ -10,6 +11,8 @@ namespace Game.UnityComponents
 		public int level;
 		public float cost;
 		public string name;
+		public Button button;
+
 
 		public abstract void Process(ref ClockComponent clock);
 

@@ -21,6 +21,7 @@ namespace Game
 				truScoreCurrent += clock.ScorePerSecond * clock.HandSpeed / 6f;
 				var scoreDiff = clock.ScorePerSecond * clock.HandSpeed / 6f * Time.deltaTime;
 				_gameState.Score += scoreDiff;
+				
 			}
 			
 			_gameState.ScorePerSecond = truScoreCurrent;

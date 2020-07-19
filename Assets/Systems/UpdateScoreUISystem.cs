@@ -18,7 +18,6 @@ namespace Game
 			foreach (var index in _filter)
 			{
 				_sceneData.UI.Score.text = Mathf.RoundToInt(_gameState.Score).ToString();
-				_sceneData.UI.ScorePerSecond.text = _gameState.ScorePerSecond.ToString(CultureInfo.InvariantCulture);
 				// _sceneData.UI.costHandSpeedUpgrade.text = PrefixHandSpeedUpgrade +
 				//                                           Mathf.Round(HandSpeedUpgrade.Instance.cost).ToString(CultureInfo.
 				// 	                                          InvariantCulture);

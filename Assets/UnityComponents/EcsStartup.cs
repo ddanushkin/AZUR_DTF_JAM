@@ -28,7 +28,6 @@ namespace Game {
                 .Add(new MouseInputSystem())
                 .Add(new ClockSystem())
                 .Add(new ClockReloadSystem())
-                .Add(new UpdateTimerUISystem())
                 .Add(new UpdateScoreSystem())
                 .Add(new UpdateScoreUISystem())
                 .Add(new UpgradeEventSystem())
@@ -37,6 +36,7 @@ namespace Game {
                 .Add(new HelperMotionSystem())
                 .Add(new TimerSystem())
                 .Add(new HelperProcSystem())
+                .Add(new UpdateTimerUISystem())
                 
                 // register one-frame components (order is important), for example:
                 .OneFrame<UpdateScoreEvent>()

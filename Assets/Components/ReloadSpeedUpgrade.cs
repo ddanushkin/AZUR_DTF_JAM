@@ -1,4 +1,7 @@
+using System.Globalization;
 using Game.UnityComponents;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -12,9 +15,12 @@ namespace Game
 
 		public override void Process(ref ClockComponent clock)
 		{
-			clock.SpeedHandBack += level * 0.25f;
+			cost = 100 * Mathf.Pow(1.47F, level);
+			clock.SpeedHandBack += Mathf.Log(clock.HandSpeed);
 			level += 1;
-			cost += cost * 0.02f;
+			cost = 100 * Mathf.Pow(1.47F, level);
+			button.GetComponentInChildren<Text>().text = name + Mathf.Round(cost).ToString(CultureInfo.InvariantCulture);
+
 		}
 	}
 }
