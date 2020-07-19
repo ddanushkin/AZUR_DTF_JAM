@@ -12,3 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c890912f006d477e906699a4fc842497, type: 3}
   m_Name: Main config
   m_EditorClassIdentifier: 
+  upgradeConfigs:
+  - name: HandSpeed
+    cost: 10
+    level: 1
+  - name: ScorePerSecond
+    cost: 10
+    level: 1
+  - name: ReloadSpeed
+    cost: 0
+    level: 1

@@ -4,9 +4,9 @@ namespace Game
 	{
 		public override void Process(ref ClockComponent clock)
 		{
-			clock.HandSpeed += level * 0.25f;
+			clock.HandSpeed += level * 1.25f;
 			level += 1;
-			cost += cost * 0.02f;
+			cost += cost * 2f;
 		}
 
 		public HandSpeedUpgrade(UpgradeConfig config) : base(config) {}

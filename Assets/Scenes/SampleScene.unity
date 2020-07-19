@@ -153,7 +153,7 @@ RectTransform:
   m_Children:
   - {fileID: 848624425}
   m_Father: {fileID: 350528789}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -352,7 +352,7 @@ RectTransform:
   m_Children:
   - {fileID: 987512667}
   m_Father: {fileID: 350528789}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -452,6 +452,7 @@ RectTransform:
   m_Children:
   - {fileID: 1408096830}
   - {fileID: 2129838564}
+  - {fileID: 1933365830}
   - {fileID: 216661024}
   - {fileID: 120752792}
   - {fileID: 1784793100}
@@ -478,8 +479,12 @@ MonoBehaviour:
   Timer: {fileID: 1408096831}
   Score: {fileID: 2129838565}
   HandSpeedUpgradeButton: {fileID: 216661021}
+  costHandSpeedUpgrade: {fileID: 987512668}
   ScoreUpgradeButton: {fileID: 120752793}
-  HandSpeedBackButton: {fileID: 1784793101}
+  costScoreUpgrade: {fileID: 848624426}
+  HandReloadSpeedButton: {fileID: 1784793101}
+  costHandReloadSpeed: {fileID: 512297603}
+  ScorePerSecond: {fileID: 1933365831}
 --- !u!1 &512297601
 GameObject:
   m_ObjectHideFlags: 0
@@ -1010,7 +1015,7 @@ RectTransform:
   m_Children:
   - {fileID: 512297602}
   m_Father: {fileID: 350528789}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -1097,6 +1102,84 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1784793099}
   m_CullTransparentMesh: 0
+--- !u!1 &1933365829
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1933365830}
+  - component: {fileID: 1933365832}
+  - component: {fileID: 1933365831}
+  m_Layer: 5
+  m_Name: ScorePerSecond
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1933365830
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933365829}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 350528789}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 1}
+  m_AnchorMax: {x: 0, y: 1}
+  m_AnchoredPosition: {x: 15, y: -105}
+  m_SizeDelta: {x: 72.50894, y: 48.004578}
+  m_Pivot: {x: 0, y: 1}
+--- !u!114 &1933365831
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933365829}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5f7201a12d95ffc409449d95f23cf332, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_FontData:
+    m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
+    m_FontSize: 19
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 11
+    m_MaxSize: 178
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 0
+--- !u!222 &1933365832
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1933365829}
+  m_CullTransparentMesh: 0
 --- !u!1 &2124416784
 GameObject:
   m_ObjectHideFlags: 0
@@ -1155,7 +1238,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41f0a27676434edd9615fbd2a5110b69, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  camera: {fileID: 0}
   UI: {fileID: 350528790}
   circle: {fileID: 1642931290148849772, guid: b0b9335345bbd7646a334d14affc8b5f, type: 3}
   clockPrefab: {fileID: 447609260245299288, guid: cc860dc122301de4fbc9ce6165480789,
