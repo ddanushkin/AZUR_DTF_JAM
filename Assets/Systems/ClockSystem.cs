@@ -9,7 +9,6 @@ namespace Game
 		private EcsFilter<ClockComponent>.Exclude<NeedReloadFlag> _filter;
 		private SceneData _sceneData;
 		
-		
 		public void Run()
 		{
 			foreach (var index in _filter)
