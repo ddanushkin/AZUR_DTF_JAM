@@ -7,7 +7,6 @@ namespace Game
 {
 	class SceneData : MonoBehaviour
 	{
-		public Camera camera;
 		public UI UI;
 		public GameObject circle;
 		public GameObject clockPrefab;

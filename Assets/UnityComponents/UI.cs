@@ -8,5 +8,5 @@ class UI : MonoBehaviour
 	public Text Score;
 	public Button HandSpeedUpgradeButton;
 	public Button ScoreUpgradeButton;
-	public Button HandSpeedBackButton;
+	public Button HandReloadSpeedButton;
 }

@@ -7,7 +7,7 @@ namespace Game {
     {
         EcsWorld _world;
         EcsSystems _systems;
-        private GameState _gameState;
+        public GameState GameState;
         public Configuration Configuration;
         public SceneData SceneData;
 
@@ -18,7 +18,7 @@ namespace Game {
             Leopotam.Ecs.UnityIntegration.EcsWorldObserver.Create (_world);
             Leopotam.Ecs.UnityIntegration.EcsSystemsObserver.Create (_systems);
 #endif
-            _gameState = new GameState();
+            GameState = new GameState();
             
             _systems
                 // register your systems here, for example:
@@ -26,20 +26,17 @@ namespace Game {
                 .Add(new ClockSystem())
                 .Add(new UpdateTimerSystem())
                 .Add(new UpdateScoreSystem())
-                .Add(new UiUpgradeSystem())
-                .Add(new HandSpeedUpgradeSystem())
-                .Add(new ScoreUpgradeSystem())
-                .Add(new HandSpeedBackSystem())
-                
+                .Add(new InitUpgradeSystem())
+                .Add(new UpgradeEventSystem())
+
                 // register one-frame components (order is important), for example:
-                .OneFrame<UpdateScoreEvent> ()
-                .OneFrame<HandSpeedUpgradeEvent>()
-                .OneFrame<ScoreUpgradeEvent>()
-                .OneFrame<HandSpeedBackEvent>()
+                .OneFrame<UpdateScoreEvent>()
+                .OneFrame<UpgradeEvent>()
+
                 // inject service instances here (order doesn't important), for example:
                 .Inject(Configuration)
                 .Inject(SceneData)
-                .Inject(_gameState)
+                .Inject(GameState)
 
                 .Init ();
         }

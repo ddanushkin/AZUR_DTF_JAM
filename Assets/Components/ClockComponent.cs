@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Game
 {
-	internal struct ClockComponent
+	public struct ClockComponent
 	{
 		public float MaxAngle;
 		public float CurrentAngle;
