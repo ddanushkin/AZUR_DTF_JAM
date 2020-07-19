@@ -16,7 +16,7 @@ namespace Game
 		{
 			SubscribeUpgradeToButtonEvent(
 				_sceneData.UI.HandSpeedUpgradeButton,
-				new HardSpeedUpgrade(_config.FindUpgradeConfig("HandSpeed")));
+				new HandSpeedUpgrade(_config.FindUpgradeConfig("HandSpeed")));
 			
 			SubscribeUpgradeToButtonEvent(
 				_sceneData.UI.ScoreUpgradeButton,

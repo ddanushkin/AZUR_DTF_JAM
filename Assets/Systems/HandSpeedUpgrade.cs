@@ -1,6 +1,6 @@
 namespace Game
 {
-	public class HardSpeedUpgrade : Upgrade
+	public class HandSpeedUpgrade : Upgrade
 	{
 		public override void Process(ref ClockComponent clock)
 		{
@@ -9,9 +9,6 @@ namespace Game
 			cost += cost * 0.02f;
 		}
 
-		public HardSpeedUpgrade(UpgradeConfig config) : base(config)
-		{
-			
-		}
+		public HandSpeedUpgrade(UpgradeConfig config) : base(config) {}
 	}
 }

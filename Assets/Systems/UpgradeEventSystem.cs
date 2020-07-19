@@ -8,6 +8,8 @@ namespace Game
 		private GameState _gameState;
 		private EcsFilter<UpgradeEvent> _eventFilter;
 		private EcsFilter<ClockComponent> _filter;
+		private EcsWorld _ecsWorld;
+		
 		public void Run()
 		{
 			if (_eventFilter.IsEmpty()) return;
@@ -16,6 +18,7 @@ namespace Game
 			_gameState.Score -= upgrade.cost;
 			foreach (var index in _filter)
 				upgrade.Process(ref _filter.Get1(index));
+			_ecsWorld.NewEntity().Get<UpdateScoreUIEvent>();
 		}
 	}
 }

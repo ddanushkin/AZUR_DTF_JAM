@@ -7,8 +7,7 @@ namespace Game
 	internal class ClockSystem : IEcsRunSystem
 	{
 		private EcsFilter<ClockComponent>.Exclude<NeedReloadFlag> _filter;
-		private SceneData _sceneData;
-		
+
 		public void Run()
 		{
 			foreach (var index in _filter)
@@ -17,11 +16,12 @@ namespace Game
 				var handTransform = clock.HandTransform;
 				var angles = handTransform.localEulerAngles;
 				
-				if (clock.CurrentAngle < 0)
+				if (clock.CurrentAngle <= 0)
 				{
 					clock.CurrentAngle = 0f;
 					angles.z = 0f;
 					handTransform.eulerAngles = angles;
+					_filter.GetEntity(index).Get<NeedReloadFlag>() = new NeedReloadFlag();
 				}
         
 				if (clock.CurrentAngle > 0f)
@@ -30,20 +30,6 @@ namespace Game
 					handTransform.Rotate(Vector3.forward * -angleDiff);
 					clock.CurrentAngle -= angleDiff;
 					_filter.GetEntity(index).Get<UpdateScoreEvent>() = new UpdateScoreEvent();
-				}
-				
-				if (Input.GetMouseButton(0) && !EventSystem.current.IsPointerOverGameObject() 
-				                            && clock.HandSpeed < clock.SpeedHandBack)
-				{
-					var angleDiff = clock.SpeedHandBack * Time.deltaTime;
-					clock.CurrentAngle += angleDiff;
-					handTransform.Rotate(Vector3.forward * angleDiff);
-					if (clock.CurrentAngle >= clock.MaxAngle)
-					{
-						angles.z = 0f;
-						handTransform.eulerAngles = angles;
-						clock.CurrentAngle = clock.MaxAngle;
-					}
 				}
 			}
 			

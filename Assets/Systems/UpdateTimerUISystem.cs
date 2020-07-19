@@ -3,7 +3,7 @@ using Game;
 using Leopotam.Ecs;
 using UnityEngine;
 
-class UpdateTimerSystem : IEcsRunSystem
+class UpdateTimerUISystem : IEcsRunSystem
 {
 	private SceneData _sceneData;
 	
