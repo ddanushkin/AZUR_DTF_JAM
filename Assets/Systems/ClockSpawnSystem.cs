@@ -14,11 +14,11 @@ namespace Game
 		{
 			if (_filter.IsEmpty()) return;
 			var clockEntity = _ecsWorld.NewEntity();
-			var clockPosition = new Vector3(0, _gameState.SpawnedClocks * 10f, 0f);
+			var clockPosition = new Vector3(-10f + _gameState.SpawnedClocks * 10f, 0f, 0f);
 			var clockGo = Object.Instantiate(_sceneData.clockPrefab, clockPosition, Quaternion.identity);
 			clockEntity.Get<ClockComponent>() = new ClockComponent
 			{
-				CurrentAngle = 360f,
+				CurrentAngle = 0f,
 				MaxAngle = 360f,
 				HandSpeed = 6f,
 				ScorePerSecond = 20f,
@@ -29,7 +29,10 @@ namespace Game
 				helperCount = 0
 			};
 			if (_gameState.ActiveClock.IsNull())
+			{
 				_gameState.ActiveClock = clockEntity;
+				clockGo.transform.GetComponent<SetState>().Set(true);
+			}
 			_gameState.SpawnedClocks++;
 		}
 	}

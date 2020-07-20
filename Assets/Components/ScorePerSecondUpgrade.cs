@@ -1,4 +1,5 @@
 using Game.UnityComponents;
+using UnityEngine.UI;
 
 namespace Game
 {
@@ -6,7 +7,7 @@ namespace Game
 	{
 		public static ScorePerSecondUpgrade Instance;
 
-		public ScorePerSecondUpgrade(UpgradeConfig config) : base(config)
+		public ScorePerSecondUpgrade(UpgradeConfig config, Button button) : base(config, button)
 		{
 			Instance = this;
 		}

@@ -17,16 +17,7 @@ namespace Game
 		{
 			foreach (var index in _filter)
 			{
-				_sceneData.UI.Score.text = Mathf.RoundToInt(_gameState.Score).ToString();
-				// _sceneData.UI.costHandSpeedUpgrade.text = PrefixHandSpeedUpgrade +
-				//                                           Mathf.Round(HandSpeedUpgrade.Instance.cost).ToString(CultureInfo.
-				// 	                                          InvariantCulture);
-				// _sceneData.UI.costScoreUpgrade.text = PrefixScoreUpgrade +
-				//                                       Mathf.Round(ScorePerSecondUpgrade.Instance.cost).ToString(CultureInfo
-				// 	                                      .InvariantCulture);
-				// _sceneData.UI.handSpeedBonus.text = PrefixHandSpeedBonus +
-				//                                     HandSpeedUpgrade.Instance.BonusSpeed.ToString(CultureInfo
-				// 	                                    .InvariantCulture);
+				_sceneData.UI.Score.text = "Score: " + Mathf.RoundToInt(_gameState.Score);
 			}
 		}
 	}

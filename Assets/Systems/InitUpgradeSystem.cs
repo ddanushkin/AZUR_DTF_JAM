@@ -18,8 +18,8 @@ namespace Game
 		public void Init()
 		{
 			SubscribeUpgradeToButton<HandSpeedUpgrade>("Increase Hand Speed: ");
-			SubscribeUpgradeToButton<ScorePerSecondUpgrade>("ScorePerSecond");
-			SubscribeUpgradeToButton<ReloadSpeedUpgrade>("Reload Speed: ");
+			SubscribeUpgradeToButton<ScorePerSecondUpgrade>("Increase Score Per Second: ");
+			SubscribeUpgradeToButton<ReloadSpeedUpgrade>("Decrease Reload Speed: ");
 
 			SubscribeEntityEventToButton<ClockSpawnEvent>("Spawn Clock");
 			//SubscribeEntityEventToButton<HelperSpawnEvent>("Spawn Helper");
@@ -57,15 +57,11 @@ namespace Game
 
 		private void SubscribeUpgradeToButton<T>(string name) where T : Upgrade
 		{
-			var upgradeInstanse = (T)Activator.CreateInstance(typeof(T), _config.FindUpgradeConfig(name));
-
 			var buttonGameObject = Object.Instantiate(
 				_sceneData.upgradeButtonPrefab, Vector3.zero, quaternion.identity,
 				_sceneData.UI.UpgradesLayoutCanvas.transform);
-			
 			var buttonComponent = buttonGameObject.GetComponent<Button>();
-			buttonGameObject.GetComponentInChildren<Text>().text = upgradeInstanse.name;
-			upgradeInstanse.button = buttonComponent;
+			var upgradeInstanse = (T)Activator.CreateInstance(typeof(T), _config.FindUpgradeConfig(name), buttonComponent);
 			buttonComponent.onClick.AddListener(() =>
 			{
 				_ecsWorld.NewEntity().Get<UpgradeEvent>() = new UpgradeEvent(upgradeInstanse);

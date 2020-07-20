@@ -17,11 +17,10 @@ namespace Game
 			level += 1;
 			cost = 100 * Mathf.Pow(1.47F, level);
 			BonusSpeed = clock.HandSpeed % BaseSpeed;
-			Debug.Log(clock.HandSpeed + " " + cost);
 			button.GetComponentInChildren<Text>().text = name + Mathf.Round(cost).ToString(CultureInfo.InvariantCulture);
 		}
 
-		public HandSpeedUpgrade(UpgradeConfig config) : base(config)
+		public HandSpeedUpgrade(UpgradeConfig config, Button button) : base(config, button)
 		{
 			Instance = this;
 		}

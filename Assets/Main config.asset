@@ -13,12 +13,12 @@ MonoBehaviour:
   m_Name: Main config
   m_EditorClassIdentifier: 
   upgradeConfigs:
-  - name: HandSpeed
-    cost: 1
+  - name: 'Increase Hand Speed: '
+    cost: 100
     level: 1
-  - name: ScorePerSecond
+  - name: 'Increase Score Per Second: '
     cost: 200
     level: 1
-  - name: ReloadSpeed
+  - name: 'Decrease Reload Speed: '
     cost: 50
     level: 1

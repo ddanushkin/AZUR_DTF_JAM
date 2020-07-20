@@ -20,8 +20,10 @@ namespace Game
 					var clock = _filter.Get1(index);
 					mousePosition.z = clock.Bounds.center.z;
 					var mouseOverClock = clock.Bounds.Contains(mousePosition);
+					clock.Transform.GetComponent<SetState>().Set(false);
 					if (mouseOverClock && clock.HandSpeed < clock.SpeedHandBack)
 					{
+						clock.Transform.GetComponent<SetState>().Set(true);
 						_gameState.ActiveClock = _filter.GetEntity(index);
 						if (clock.HandSpeed < clock.SpeedHandBack)
 						{

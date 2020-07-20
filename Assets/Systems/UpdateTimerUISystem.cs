@@ -13,7 +13,7 @@ class UpdateTimerUISystem : IEcsRunSystem
 	{
 		TimeSpan timeSpan = TimeSpan.FromSeconds(Time.time);
 		_sceneData.UI.Timer.text = timeSpan.Seconds.ToString();
-		_sceneData.UI.ScorePerSecond.text = _gameState.ScorePerSecond.ToString(CultureInfo.InvariantCulture);
+		_sceneData.UI.ScorePerSecond.text = "Score/Sec: " + Mathf.RoundToInt(_gameState.ScorePerSecond);
 		_gameState.ScorePerSecond = 0f;
 
 	}

@@ -8,7 +8,7 @@ namespace Game
 	public class ReloadSpeedUpgrade : Upgrade
 	{
 		public static ReloadSpeedUpgrade Instance;
-		public ReloadSpeedUpgrade(UpgradeConfig config) : base(config)
+		public ReloadSpeedUpgrade(UpgradeConfig config, Button button) : base(config, button)
 		{
 			Instance = this;
 		}
@@ -20,7 +20,6 @@ namespace Game
 			level += 1;
 			cost = 100 * Mathf.Pow(1.47F, level);
 			button.GetComponentInChildren<Text>().text = name + Mathf.Round(cost).ToString(CultureInfo.InvariantCulture);
-
 		}
 	}
 }
